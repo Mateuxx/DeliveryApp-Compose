@@ -38,7 +38,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.deliveryapp.components.ProductItem
+import com.example.deliveryapp.components.ProductsSection
 import com.example.deliveryapp.model.Product
+import com.example.deliveryapp.ui.screens.HomeScreen
 import com.example.deliveryapp.ui.theme.DeliveryAppTheme
 import com.example.deliveryapp.ui.theme.Purple500
 import com.example.deliveryapp.ui.theme.Teal200
@@ -57,145 +60,9 @@ class MainActivity : ComponentActivity() {
 fun App() {
     DeliveryAppTheme {
         Surface {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                Spacer(Modifier)
-                ProductsSection()
-                ProductsSection()
-                ProductsSection()
-                Spacer(Modifier)
-            }
+            HomeScreen()
         }
     }
 }
 
-@Composable
-fun ProductsSection() {
-    Column {
-        Text(
-            text = "Promoções",
-            Modifier.padding(
-                start = 16.dp,
-                end = 16.dp
-            ),
-            fontSize = 20.sp,
-            fontWeight = FontWeight(400)
-        )
-        Row(
-            Modifier
-                .padding(
-                    top = 8.dp
-                )
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState()),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Spacer(Modifier)
-            ProductItem(
-                Product(
-                    name = "Hamburguer",
-                    price = BigDecimal("12.99"),
-                    image = R.drawable.burger
-                )
-            )
-            ProductItem(
-                Product(
-                    name = "Pizza",
-                    price = BigDecimal("19.99"),
-                    image = R.drawable.pizza
-                )
-            )
-            ProductItem(
-                Product(
-                    name = "Batata frita",
-                    price = BigDecimal("7.99"),
-                    image = R.drawable.fries
-                )
-            )
-            Spacer(Modifier)
-        }
-    }
-}
 
-@Composable
-fun ProductItem(product: Product) {
-    Surface(
-        shape = RoundedCornerShape(15.dp),
-        shadowElevation = 4.dp
-    ) {
-        Column(
-            Modifier
-                .heightIn(250.dp, 300.dp)
-                .width(200.dp)
-        ) {
-            val imageSize = 100.dp
-            Box(
-                modifier = Modifier
-                    .height(imageSize)
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(
-                                Purple500, Teal200
-                            )
-                        )
-                    )
-                    .fillMaxWidth()
-            ) {
-                Image(
-                    painter = painterResource(id = product.image),
-                    contentDescription = null,
-                    Modifier
-                        .size(imageSize)
-                        .offset(y = imageSize / 2)
-                        .clip(shape = CircleShape)
-                        .align(BottomCenter),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            Spacer(modifier = Modifier.height(imageSize / 2))
-            Column(Modifier.padding(16.dp)) {
-                Text(
-                    text = product.name,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight(700),
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = product.price.toPlainString(),
-                    Modifier.padding(top = 8.dp),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight(400)
-                )
-            }
-        }
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun AppPreview() {
-    App()
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun ProductsSectionPreview() {
-    ProductsSection()
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun ProductItemPreview() {
-    ProductItem(
-        Product(
-            name = LoremIpsum(50).values.first(),
-            price = BigDecimal("14.99"),
-            image = R.drawable.ic_launcher_background
-        )
-    )
-}
