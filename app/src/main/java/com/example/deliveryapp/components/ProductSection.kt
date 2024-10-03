@@ -20,10 +20,13 @@ import com.example.deliveryapp.model.Product
 import java.math.BigDecimal
 
 @Composable
-fun ProductsSection() {
+fun ProductsSection(
+    title: String,
+    products: List<Product>
+) {
     Column {
         Text(
-            text = "Promoções",
+            text = title,
             Modifier.padding(
                 start = 16.dp,
                 end = 16.dp
@@ -41,27 +44,10 @@ fun ProductsSection() {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Spacer(Modifier)
-            ProductItem(
-                Product(
-                    name = "Hamburguer",
-                    price = BigDecimal("12.99"),
-                    image = R.drawable.burger
-                )
-            )
-            ProductItem(
-                Product(
-                    name = "Pizza",
-                    price = BigDecimal("19.99"),
-                    image = R.drawable.pizza
-                )
-            )
-            ProductItem(
-                Product(
-                    name = "Batata frita",
-                    price = BigDecimal("7.99"),
-                    image = R.drawable.fries
-                )
-            )
+            for (produto in products) {
+                ProductItem(product = produto)
+            }
+
             Spacer(Modifier)
         }
     }
@@ -71,5 +57,23 @@ fun ProductsSection() {
 @Preview(showBackground = true)
 @Composable
 private fun ProductsSectionPreview() {
-    ProductsSection()
+    ProductsSection("Promoções", products = sampleProducts)
 }
+
+val sampleProducts = listOf(
+    Product(
+        name = "Hamburguer",
+        price = BigDecimal("12.99"),
+        image = R.drawable.burger
+    ),
+    Product(
+        name = "Pizza",
+        price = BigDecimal("19.99"),
+        image = R.drawable.pizza
+    ),
+    Product(
+        name = "Batata frita",
+        price = BigDecimal("7.99"),
+        image = R.drawable.fries
+    )
+)

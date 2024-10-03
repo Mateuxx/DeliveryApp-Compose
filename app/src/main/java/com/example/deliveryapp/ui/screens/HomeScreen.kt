@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.deliveryapp.components.ProductsSection
+import com.example.deliveryapp.components.sampleProducts
 
 
 @Composable
@@ -22,9 +23,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Spacer(Modifier)
-        ProductsSection()
-        ProductsSection()
-        ProductsSection()
+        ProductsSection("Promoções", sampleProducts)
+        ProductsSection("Doces", sampleProducts)
+        ProductsSection("Bebidas", sampleProducts)
         Spacer(Modifier)
     }
 }
