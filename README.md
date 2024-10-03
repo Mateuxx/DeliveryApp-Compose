@@ -25,8 +25,14 @@
     - Personalizações de diferentes layouts, como por exemplo, o Grid
 
 ### State Holder:
+
 - o conceito de State Holder refere-se a um padrão onde o estado da interface de usuário (UI) é
   mantido e gerenciado em um local centralizado, para que possa ser facilmente acessado e atualizado
   pelos componentes da UI. Um State Holder é uma entidade que detém o estado da UI e pode ser
   responsável por expor e atualizar esse estado de maneira eficiente e reativa.
 - Mantem todos os dados/gerenciam os que precisam aparecer na nossa tela.
+
+### MutableStateof()
+
+é uma API fornecida pelo Jetpack Compose que cria um estado observável. Quando o valor desse estado
+muda, a interface de usuário que está observando esse estado será automaticamente re-renderizada
