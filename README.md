@@ -13,7 +13,6 @@
 - Sempre há como reutilizar componentes que se repetem em várias áreas, assim como no flutter os
   quais se repetem é de boa prática que se façam componentes que possam ser reutilizados em vários
   lugares diferentes.
-
 ### Lazy Layout
 
 - Doc: https://developer.android.com/develop/ui/compose/lists
@@ -23,3 +22,8 @@
   - Implementação de rolagem por padrão;
   - Garantia de performance mesmo com diversos dados;
   - Personalizações de diferentes layouts, como por exemplo, o Grid
+
+### State Holder: 
+- No jetpack é ele quem faz toda a parte de lógica de ui juntamente com o gerenciamento de estados
+- O **viewmodel** fica mais responsavel para gerir as regrar de negocio do app.
+- doc: 
