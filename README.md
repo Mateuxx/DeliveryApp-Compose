@@ -1,6 +1,7 @@
 # Notes
 - Poc De estudo para aprender o básico de layout com o **_Compose_**
-  ![deliverySreenc.gif](..%2F..%2FdeliverySreenc.gif)
+ ![image](https://github.com/user-attachments/assets/f0a6ba92-b1e8-43fc-ad8d-9827ee3b9384)
+
 
 ### Clip:
 
